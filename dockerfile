@@ -1,7 +1,8 @@
-
+dockerfile
+Use PHP 8.2 with FPM
 FROM php:8.2-fpm
 
-Install dependencies
+Install system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
@@ -24,11 +25,11 @@ WORKDIR /var/www
 Copy project files
 COPY . .
 
-Install dependencies
+Install Laravel dependencies
 RUN composer install --optimize-autoloader --no-dev
 
-Expose port
+Expose port for Laravel server
 EXPOSE 8000
 
-Start Laravel server
+Start Laravel development server
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
