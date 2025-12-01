@@ -1,4 +1,3 @@
-dockerfile
 Use PHP 8.2 with FPM
 FROM php:8.2-fpm
 
